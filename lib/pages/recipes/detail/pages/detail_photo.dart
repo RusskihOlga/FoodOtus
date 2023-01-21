@@ -58,20 +58,14 @@ class _DetailPhotoState extends State<DetailPhoto> {
   }
 
   Future<void> _renderBoxes() async {
-    Size screen = MediaQuery.of(context).size;
-    var fileImage = File(widget.file);
-    var image = await decodeImageFromList(fileImage.readAsBytesSync());
-
-    double factorX = screen.width;
-    double factorY = image.height / image.width * screen.width;
     var result = widget.detectors.map((detect) {
       var color =
-          Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1);
+      Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1);
       return Positioned(
-        left: detect.rect.x * factorX,
-        top: detect.rect.y * factorY,
-        width: detect.rect.w * factorX,
-        height: detect.rect.h * factorY,
+        left: detect.rect.x,
+        top: detect.rect.y,
+        width: detect.rect.w,
+        height: detect.rect.h,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8.0)),

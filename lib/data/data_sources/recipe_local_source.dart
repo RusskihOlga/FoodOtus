@@ -11,6 +11,7 @@ import 'package:food_otus/data/models/network/recipe_ingridient.dart';
 import 'package:food_otus/data/models/network/recipe_json.dart';
 import 'package:food_otus/data/models/network/recipe_step_json.dart';
 import 'package:food_otus/data/models/network/step_json.dart';
+import 'package:food_otus/domain/entities/detector_data.dart';
 import 'package:hive/hive.dart';
 
 class RecipeLocalSource {
@@ -68,9 +69,9 @@ class RecipeLocalSource {
   }
 
   Future<IngredientDB> addIngredient(
-    IngredientJson ingredient,
-    RecipeIngredientJson recipeIngredient,
-  ) async {
+      IngredientJson ingredient,
+      RecipeIngredientJson recipeIngredient,
+      ) async {
     var ingredientDB = database.ingredientBox.get(ingredient.id);
     if (ingredientDB == null) {
       ingredientDB = IngredientDB(
@@ -140,11 +141,16 @@ class RecipeLocalSource {
     return photo;
   }
 
-  Future<DetectorDB> addDetector(dynamic data) async {
+  Future<DetectorDB> addDetector(DetectorData data) async {
     var detector = DetectorDB(
-      detectedClass: data["detectedClass"],
-      rect: data["rect"],
-      confidence: data["confidenceInClass"],
+      detectedClass: data.detectedClass,
+      rect: {
+        "w": data.rect.w,
+        "h": data.rect.h,
+        "x": data.rect.x,
+        "y": data.rect.y,
+      },
+      confidence: data.confidenceInClass,
     );
     await database.detectorBox.add(detector);
     return detector;
@@ -152,7 +158,7 @@ class RecipeLocalSource {
 
   List<DetectorDB> getDetectors(String path) {
     var photo =
-        database.photoBox.values.firstWhere((element) => element.path == path);
+    database.photoBox.values.firstWhere((element) => element.path == path);
     return photo.detectors;
   }
 }

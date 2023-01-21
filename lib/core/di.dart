@@ -21,7 +21,7 @@ void setupDI() {
   appIns.registerFactory<NavBloc>(() => NavBloc(repository: appIns()));
   appIns.registerFactory<LoginBloc>(() => LoginBloc(repository: appIns()));
   appIns.registerFactory<RecipeBloc>(
-    () => RecipeBloc(
+        () => RecipeBloc(
       userRepository: appIns(),
       recipeRepository: appIns(),
     ),
@@ -35,13 +35,13 @@ void setupDI() {
     ),
   );
   appIns.registerLazySingleton<RecipeRepository>(
-    () => RecipeRepository(
+        () => RecipeRepository(
       localSource: appIns(),
       remoteSource: appIns(),
     ),
   );
   appIns.registerLazySingleton<UserRepository>(
-    () => UserRepository(
+        () => UserRepository(
       remoteSource: appIns(),
       localSource: appIns(),
     ),
@@ -50,8 +50,8 @@ void setupDI() {
   appIns.registerLazySingleton(() => RecipeRemoteSource(client: appIns()));
   appIns.registerLazySingleton(() => UserRemoteSource(client: appIns()));
   appIns.registerLazySingleton(() => UserLocalSource(database: appIns()));
-  appIns.registerLazySingleton(() => Database());
   appIns.registerLazySingleton(() => DetectorHelper());
+  appIns.registerLazySingleton(() => Database());
   appIns.registerLazySingleton(() => Client());
   appIns.registerLazySingleton(() => BluetoothLowEnergyPlugin());
 }

@@ -1,8 +1,11 @@
+import 'dart:isolate';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/core/di.dart';
 import 'package:food_otus/core/helper/detector_helper.dart';
+import 'package:food_otus/domain/entities/detector_data.dart';
 import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
@@ -50,6 +53,7 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
     return BlocListener<RecipeBloc, RecipeState>(
       listener: (context, state) {
         if (state is ShowPhoto) {
+          Navigator.pop(context);
           context.pop();
         }
       },
@@ -104,25 +108,60 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
   void _takePicture() async {
     var file = await _controller!.takePicture();
 
-    var path = (await getApplicationDocumentsDirectory()).path;
-    var pathPhoto = "$path/${file.name}";
-    file.saveTo(pathPhoto);
-    var resultDetector = await appIns.get<DetectorHelper>().detectorSSD(file);
-    if (!mounted) return;
-    if (resultDetector != null) {
-      context.read<RecipeBloc>().add(SavePhoto(
-        recipe: widget.id,
-        path: pathPhoto,
-        data: resultDetector,
-      ));
-    } else {
-      context.read<RecipeBloc>().add(
-        SavePhoto(
+    showLoaderDialog();
+
+    var port = ReceivePort();
+    port.listen((message) async {
+      if (message is SendPort) {
+        var helper = appIns<DetectorHelper>();
+        var bytes = await file.readAsBytes();
+        var data = IsolateData(
+          interpreter: helper.interpreter!.address,
+          label: helper.labels!,
+          imageData: bytes,
+        );
+        message.send(data);
+      } else if (message is List<DetectorData>) {
+        var path = (await getApplicationDocumentsDirectory()).path;
+        var pathPhoto = "$path/${file.name}";
+        file.saveTo(pathPhoto);
+
+        if (!mounted) return;
+        context.read<RecipeBloc>().add(SavePhoto(
           recipe: widget.id,
           path: pathPhoto,
-          data: const [],
-        ),
-      );
-    }
+          data: message,
+        ));
+      }
+    });
+    Isolate.spawn(detectorImage, port.sendPort);
+  }
+
+  void showLoaderDialog() {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          // The background color
+          backgroundColor: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: const [
+                // The loading indicator
+                CircularProgressIndicator(),
+                SizedBox(
+                  height: 15,
+                ),
+                // Some text
+                Text('Обработка...')
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

@@ -12,7 +12,7 @@ void main() async {
   setupDI();
   await appIns.get<Database>().init();
   await appIns.get<Database>().initBoxes();
-  await appIns.get<DetectorHelper>().init();
+  await appIns.get<DetectorHelper>().loadModel();
   runApp(const FoodApp());
 }
 

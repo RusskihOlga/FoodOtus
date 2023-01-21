@@ -33,7 +33,7 @@ class AddFavorite extends RecipeEvent {
 class SavePhoto extends RecipeEvent {
   final int recipe;
   final String path;
-  final List<dynamic> data;
+  final List<DetectorData> data;
 
   SavePhoto({
     required this.recipe,

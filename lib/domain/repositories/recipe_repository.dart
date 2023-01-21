@@ -38,10 +38,10 @@ class RecipeRepository {
         var recipe = await localSource.addRecipe(item, favorite?.id);
 
         var recipesIngredient =
-            recipeIngredients.where((element) => element.recipe.id == item.id);
+        recipeIngredients.where((element) => element.recipe.id == item.id);
         for (var recipeIngredient in recipesIngredient) {
           var ingredient = ingredients.firstWhere(
-            (element) => element.id == recipeIngredient.ingredient.id,
+                (element) => element.id == recipeIngredient.ingredient.id,
           );
           var ingredientDB = await localSource.addIngredient(
             ingredient,
@@ -51,10 +51,10 @@ class RecipeRepository {
         }
 
         var recipesStep =
-            stepsLink.where((element) => element.recipe.id == item.id);
+        stepsLink.where((element) => element.recipe.id == item.id);
         for (var recipeStep in recipesStep) {
           var step = steps.firstWhere(
-            (element) => element.id == recipeStep.step.id,
+                (element) => element.id == recipeStep.step.id,
           );
           var stepDB = await localSource.addStep(
             step,
@@ -102,7 +102,7 @@ class RecipeRepository {
     return Recipe.fromDB(recipesDB!);
   }
 
-  Future<void> savePhoto(int recipe, String path, List<dynamic> data) async {
+  Future<void> savePhoto(int recipe, String path, List<DetectorData> data) async {
     var recipeDB = localSource.getRecipe(recipe)!;
     List<DetectorDB> detectors = [];
     for (var item in data) {
