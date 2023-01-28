@@ -26,6 +26,7 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
   CameraController? _controller;
   List<CameraDescription> _cameras = [];
   var _isCameraInitialized = false;
+  Isolate? _isolate;
 
   @override
   void initState() {
@@ -127,6 +128,7 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
         file.saveTo(pathPhoto);
 
         if (!mounted) return;
+        _isolate?.kill();
         context.read<RecipeBloc>().add(SavePhoto(
           recipe: widget.id,
           path: pathPhoto,
@@ -134,7 +136,7 @@ class _CameraPageState extends State<CameraPage> with WidgetsBindingObserver {
         ));
       }
     });
-    Isolate.spawn(detectorImage, port.sendPort);
+    _isolate = await Isolate.spawn(detectorImage, port.sendPort);
   }
 
   void showLoaderDialog() {
