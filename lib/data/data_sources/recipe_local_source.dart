@@ -51,6 +51,14 @@ class RecipeLocalSource {
     return data;
   }
 
+  List<IngredientDB> getIngredients(int recipe) {
+    var data = database.recipeBox.get(recipe);
+    if (data != null) {
+      return data.ingredients;
+    }
+    return [];
+  }
+
   void updateFavorite(int id, int? favorite) {
     var recipe = database.recipeBox.get(id);
     if (recipe != null) {
@@ -78,6 +86,7 @@ class RecipeLocalSource {
         id: ingredient.id,
         name: ingredient.name!,
         count: recipeIngredient.count,
+        caloriesForUnit: ingredient.caloriesForUnit!,
         measureUnit: getMeasureUnit(ingredient.measureUnit!.id),
       );
       await database.ingredientBox.add(ingredientDB);

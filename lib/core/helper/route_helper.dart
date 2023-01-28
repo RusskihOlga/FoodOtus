@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_otus/core/animation/custom_route.dart';
-import 'package:food_otus/pages/favorite/pages/favorite_page.dart';
-import 'package:food_otus/pages/login/pages/login_page.dart';
-import 'package:food_otus/pages/login/pages/reg_page.dart';
-import 'package:food_otus/pages/main/main_page.dart';
-import 'package:food_otus/pages/profile/pages/profile_page.dart';
-import 'package:food_otus/pages/recipes/detail/pages/camera_page.dart';
-import 'package:food_otus/pages/recipes/detail/pages/detail_photo.dart';
-import 'package:food_otus/pages/recipes/detail/pages/details_page.dart';
-import 'package:food_otus/pages/recipes/pages/recipes_page.dart';
+import 'package:food_otus/presentation/favorite/pages/favorite_page.dart';
+import 'package:food_otus/presentation/login/pages/login_page.dart';
+import 'package:food_otus/presentation/login/pages/reg_page.dart';
+import 'package:food_otus/presentation/main/main_page.dart';
+import 'package:food_otus/presentation/profile/pages/profile_page.dart';
+import 'package:food_otus/presentation/recipes/detail/pages/camera_page.dart';
+import 'package:food_otus/presentation/recipes/detail/pages/detail_photo.dart';
+import 'package:food_otus/presentation/recipes/detail/pages/details_page.dart';
+import 'package:food_otus/presentation/recipes/pages/recipes_page.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();

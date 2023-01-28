@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
 import 'package:rive/rive.dart';
 
 class FavoritesWidget extends StatefulWidget {
@@ -90,60 +90,62 @@ class _FavoritesWidgetState extends State<FavoritesWidget>
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
-      child: InkWell(
-        splashFactory: NoSplash.splashFactory,
-        highlightColor: Colors.transparent,
-        onTap: () {
-          _status = !_status;
-          context.read<RecipeBloc>().add(AddFavorite(widget.id, _status));
-          if (_status) {
-            setState(() {});
-          } else {
-            _controllerScale.forward();
-            _controllerColor.reverse();
-          }
-
-          SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      child: Material(
+        child: InkWell(
+          splashFactory: NoSplash.splashFactory,
+          highlightColor: Colors.transparent,
+          onTap: () {
+            _status = !_status;
+            context.read<RecipeBloc>().add(AddFavorite(widget.id, _status));
             if (_status) {
-              _controllerScale.forward();
-              _controllerColor.forward();
+              setState(() {});
             } else {
-              _countScale = 0;
-              _controllerRive.isActive = true;
+              _controllerScale.forward();
+              _controllerColor.reverse();
             }
-          });
-        },
-        child: SizedBox(
-          width: 35,
-          height: 35,
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Center(
-                child: ScaleTransition(
-                  scale: _controllerScale,
-                  child: AnimatedBuilder(
-                    animation: _colorAnimation,
-                    builder: (context, _) => SvgPicture.asset(
-                      "assets/images/favorite.svg",
-                      width: 30,
-                      height: 30,
-                      color: _colorAnimation.value,
+
+            SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+              if (_status) {
+                _controllerScale.forward();
+                _controllerColor.forward();
+              } else {
+                _countScale = 0;
+                _controllerRive.isActive = true;
+              }
+            });
+          },
+          child: SizedBox(
+            width: 35,
+            height: 35,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Center(
+                  child: ScaleTransition(
+                    scale: _controllerScale,
+                    child: AnimatedBuilder(
+                      animation: _colorAnimation,
+                      builder: (context, _) => SvgPicture.asset(
+                        "assets/images/favorite.svg",
+                        width: 30,
+                        height: 30,
+                        color: _colorAnimation.value,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              if (!_status)
-                SizedBox(
-                  width: 35,
-                  height: 35,
-                  child: RiveAnimation.asset(
-                    "assets/animation/favorite.riv",
-                    alignment: Alignment.center,
-                    controllers: [_controllerRive],
+                if (!_status)
+                  SizedBox(
+                    width: 35,
+                    height: 35,
+                    child: RiveAnimation.asset(
+                      "assets/animation/favorite.riv",
+                      alignment: Alignment.center,
+                      controllers: [_controllerRive],
+                    ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

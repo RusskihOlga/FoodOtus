@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/domain/entities/recipe.dart';
-import 'package:food_otus/pages/main/nav_bloc.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
-import 'package:food_otus/pages/recipes/detail/widgets/gallery.dart';
-import 'package:food_otus/pages/recipes/detail/widgets/item_ingredient.dart';
-import 'package:food_otus/pages/recipes/detail/widgets/item_step.dart';
-import 'package:food_otus/pages/recipes/widgets/favorite_widget.dart';
-import 'package:food_otus/pages/recipes/widgets/item_recipe.dart';
+import 'package:food_otus/presentation/main/nav_bloc.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/detail/widgets/gallery.dart';
+import 'package:food_otus/presentation/recipes/detail/widgets/ingredient_bloc.dart';
+import 'package:food_otus/presentation/recipes/detail/widgets/step_block.dart';
+import 'package:food_otus/presentation/recipes/detail/widgets/favorite_widget.dart';
+import 'package:food_otus/presentation/recipes/widgets/item_recipe.dart';
 import 'package:go_router/go_router.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -64,7 +64,7 @@ class _DetailsPageState extends State<DetailsPage> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.only(top: 38.0, left: 15, right: 15),
+                  const EdgeInsets.only(top: 38.0, left: 15, right: 15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -106,48 +106,9 @@ class _DetailsPageState extends State<DetailsPage> {
                         ),
                       ),
                       if (widget.recipe.ingredients.isNotEmpty)
-                        const TitleBlock(title: "Ингредиенты"),
-                      if (widget.recipe.ingredients.isNotEmpty)
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color(0xFF797676),
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: ListView.separated(
-                            shrinkWrap: true,
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 15,
-                              horizontal: 15,
-                            ),
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(
-                              height: 15,
-                            ),
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: (context, index) => ItemIngredient(
-                              ingredient: widget.recipe.ingredients[index],
-                            ),
-                            itemCount: widget.recipe.ingredients.length,
-                          ),
-                        ),
+                        IngredientBlock(recipe: widget.recipe),
                       if (widget.recipe.steps.isNotEmpty)
-                        const TitleBlock(title: "Шаги приготовления"),
-                      if (widget.recipe.steps.isNotEmpty)
-                        ListView.separated(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
-                          separatorBuilder: (context, index) => const SizedBox(
-                            height: 15,
-                          ),
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) => ItemStep(
-                            step: widget.recipe.steps[index],
-                          ),
-                          itemCount: widget.recipe.steps.length,
-                        ),
+                        StepBlock(recipe: widget.recipe),
                       const SizedBox(height: 20),
                       Gallery(recipe: widget.recipe),
                       const SizedBox(height: 20),

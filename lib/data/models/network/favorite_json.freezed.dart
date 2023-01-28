@@ -34,7 +34,8 @@ mixin _$FavoriteJson {
 abstract class $FavoriteJsonCopyWith<$Res> {
   factory $FavoriteJsonCopyWith(
           FavoriteJson value, $Res Function(FavoriteJson) then) =
-      _$FavoriteJsonCopyWithImpl<$Res>;
+      _$FavoriteJsonCopyWithImpl<$Res, FavoriteJson>;
+  @useResult
   $Res call({int id, UserJson user, RecipeJson recipe});
 
   $UserJsonCopyWith<$Res> get user;
@@ -42,46 +43,51 @@ abstract class $FavoriteJsonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FavoriteJsonCopyWithImpl<$Res> implements $FavoriteJsonCopyWith<$Res> {
+class _$FavoriteJsonCopyWithImpl<$Res, $Val extends FavoriteJson>
+    implements $FavoriteJsonCopyWith<$Res> {
   _$FavoriteJsonCopyWithImpl(this._value, this._then);
 
-  final FavoriteJson _value;
   // ignore: unused_field
-  final $Res Function(FavoriteJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? user = freezed,
-    Object? recipe = freezed,
+    Object? id = null,
+    Object? user = null,
+    Object? recipe = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      user: user == freezed
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserJson,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserJsonCopyWith<$Res> get user {
     return $UserJsonCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
+      return _then(_value.copyWith(user: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RecipeJsonCopyWith<$Res> get recipe {
     return $RecipeJsonCopyWith<$Res>(_value.recipe, (value) {
-      return _then(_value.copyWith(recipe: value));
+      return _then(_value.copyWith(recipe: value) as $Val);
     });
   }
 }
@@ -93,6 +99,7 @@ abstract class _$$_FavoriteJsonCopyWith<$Res>
           _$_FavoriteJson value, $Res Function(_$_FavoriteJson) then) =
       __$$_FavoriteJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, UserJson user, RecipeJson recipe});
 
   @override
@@ -103,31 +110,29 @@ abstract class _$$_FavoriteJsonCopyWith<$Res>
 
 /// @nodoc
 class __$$_FavoriteJsonCopyWithImpl<$Res>
-    extends _$FavoriteJsonCopyWithImpl<$Res>
+    extends _$FavoriteJsonCopyWithImpl<$Res, _$_FavoriteJson>
     implements _$$_FavoriteJsonCopyWith<$Res> {
   __$$_FavoriteJsonCopyWithImpl(
       _$_FavoriteJson _value, $Res Function(_$_FavoriteJson) _then)
-      : super(_value, (v) => _then(v as _$_FavoriteJson));
+      : super(_value, _then);
 
-  @override
-  _$_FavoriteJson get _value => super._value as _$_FavoriteJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? user = freezed,
-    Object? recipe = freezed,
+    Object? id = null,
+    Object? user = null,
+    Object? recipe = null,
   }) {
     return _then(_$_FavoriteJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      user: user == freezed
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as UserJson,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
@@ -161,21 +166,18 @@ class _$_FavoriteJson implements _FavoriteJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FavoriteJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.user, user) &&
-            const DeepCollectionEquality().equals(other.recipe, recipe));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.recipe, recipe) || other.recipe == recipe));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(user),
-      const DeepCollectionEquality().hash(recipe));
+  int get hashCode => Object.hash(runtimeType, id, user, recipe);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FavoriteJsonCopyWith<_$_FavoriteJson> get copyWith =>
       __$$_FavoriteJsonCopyWithImpl<_$_FavoriteJson>(this, _$identity);
 

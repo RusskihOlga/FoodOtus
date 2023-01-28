@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/domain/entities/recipe.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
-import 'package:food_otus/pages/recipes/widgets/item_recipe.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/widgets/item_recipe.dart';
 
 class ListRecipe extends StatelessWidget {
   final List<Recipe> recipes;

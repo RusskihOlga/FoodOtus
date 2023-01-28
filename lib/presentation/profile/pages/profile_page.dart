@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/core/di.dart';
-import 'package:food_otus/pages/profile/bloc/profile_bloc.dart';
-import 'package:food_otus/pages/profile/widgets/item_profile.dart';
+import 'package:food_otus/presentation/profile/bloc/profile_bloc.dart';
+import 'package:food_otus/presentation/profile/widgets/item_profile.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

@@ -19,15 +19,16 @@ class IngredientDBAdapter extends TypeAdapter<IngredientDB> {
     return IngredientDB(
       id: fields[0] as int,
       name: fields[1] as String,
+      caloriesForUnit: fields[3] as double,
       count: fields[2] as int,
-      measureUnit: fields[3] as MeasureUnitDB,
+      measureUnit: fields[4] as MeasureUnitDB,
     );
   }
 
   @override
   void write(BinaryWriter writer, IngredientDB obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,6 +36,8 @@ class IngredientDBAdapter extends TypeAdapter<IngredientDB> {
       ..writeByte(2)
       ..write(obj.count)
       ..writeByte(3)
+      ..write(obj.caloriesForUnit)
+      ..writeByte(4)
       ..write(obj.measureUnit);
   }
 

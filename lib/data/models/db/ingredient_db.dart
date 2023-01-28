@@ -11,11 +11,14 @@ class IngredientDB extends HiveObject {
   @HiveField(2)
   int count;
   @HiveField(3)
+  double caloriesForUnit;
+  @HiveField(4)
   MeasureUnitDB measureUnit;
 
   IngredientDB({
     required this.id,
     required this.name,
+    required this.caloriesForUnit,
     required this.count,
     required this.measureUnit,
   });

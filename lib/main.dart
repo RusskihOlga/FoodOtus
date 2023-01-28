@@ -4,8 +4,9 @@ import 'package:food_otus/core/database.dart';
 import 'package:food_otus/core/di.dart';
 import 'package:food_otus/core/helper/detector_helper.dart';
 import 'package:food_otus/core/helper/route_helper.dart';
-import 'package:food_otus/pages/main/nav_bloc.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
+
+import 'presentation/main/nav_bloc.dart';
+import 'presentation/recipes/bloc/recipe_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

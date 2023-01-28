@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/core/di.dart';
 import 'package:food_otus/core/helper/detector_helper.dart';
 import 'package:food_otus/domain/entities/detector_data.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:path_provider/path_provider.dart';
 

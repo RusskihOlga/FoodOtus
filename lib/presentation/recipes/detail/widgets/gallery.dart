@@ -5,7 +5,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/domain/entities/photo.dart';
 import 'package:food_otus/domain/entities/recipe.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class Gallery extends StatefulWidget {

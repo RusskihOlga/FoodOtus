@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
-import 'package:food_otus/pages/recipes/widgets/list_recipe.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/recipes/widgets/list_recipe.dart';
 import 'package:go_router/go_router.dart';
 
 class RecipesPage extends StatefulWidget {

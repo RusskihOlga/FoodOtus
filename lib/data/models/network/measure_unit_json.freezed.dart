@@ -35,44 +35,47 @@ mixin _$MeasureUnitJson {
 abstract class $MeasureUnitJsonCopyWith<$Res> {
   factory $MeasureUnitJsonCopyWith(
           MeasureUnitJson value, $Res Function(MeasureUnitJson) then) =
-      _$MeasureUnitJsonCopyWithImpl<$Res>;
+      _$MeasureUnitJsonCopyWithImpl<$Res, MeasureUnitJson>;
+  @useResult
   $Res call({int id, String? one, String? few, String? many});
 }
 
 /// @nodoc
-class _$MeasureUnitJsonCopyWithImpl<$Res>
+class _$MeasureUnitJsonCopyWithImpl<$Res, $Val extends MeasureUnitJson>
     implements $MeasureUnitJsonCopyWith<$Res> {
   _$MeasureUnitJsonCopyWithImpl(this._value, this._then);
 
-  final MeasureUnitJson _value;
   // ignore: unused_field
-  final $Res Function(MeasureUnitJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? one = freezed,
     Object? few = freezed,
     Object? many = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      one: one == freezed
+      one: freezed == one
           ? _value.one
           : one // ignore: cast_nullable_to_non_nullable
               as String?,
-      few: few == freezed
+      few: freezed == few
           ? _value.few
           : few // ignore: cast_nullable_to_non_nullable
               as String?,
-      many: many == freezed
+      many: freezed == many
           ? _value.many
           : many // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -83,41 +86,40 @@ abstract class _$$_MeasureUnitJsonCopyWith<$Res>
           _$_MeasureUnitJson value, $Res Function(_$_MeasureUnitJson) then) =
       __$$_MeasureUnitJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String? one, String? few, String? many});
 }
 
 /// @nodoc
 class __$$_MeasureUnitJsonCopyWithImpl<$Res>
-    extends _$MeasureUnitJsonCopyWithImpl<$Res>
+    extends _$MeasureUnitJsonCopyWithImpl<$Res, _$_MeasureUnitJson>
     implements _$$_MeasureUnitJsonCopyWith<$Res> {
   __$$_MeasureUnitJsonCopyWithImpl(
       _$_MeasureUnitJson _value, $Res Function(_$_MeasureUnitJson) _then)
-      : super(_value, (v) => _then(v as _$_MeasureUnitJson));
+      : super(_value, _then);
 
-  @override
-  _$_MeasureUnitJson get _value => super._value as _$_MeasureUnitJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? one = freezed,
     Object? few = freezed,
     Object? many = freezed,
   }) {
     return _then(_$_MeasureUnitJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      one: one == freezed
+      one: freezed == one
           ? _value.one
           : one // ignore: cast_nullable_to_non_nullable
               as String?,
-      few: few == freezed
+      few: freezed == few
           ? _value.few
           : few // ignore: cast_nullable_to_non_nullable
               as String?,
-      many: many == freezed
+      many: freezed == many
           ? _value.many
           : many // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -156,23 +158,19 @@ class _$_MeasureUnitJson implements _MeasureUnitJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MeasureUnitJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.one, one) &&
-            const DeepCollectionEquality().equals(other.few, few) &&
-            const DeepCollectionEquality().equals(other.many, many));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.one, one) || other.one == one) &&
+            (identical(other.few, few) || other.few == few) &&
+            (identical(other.many, many) || other.many == many));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(one),
-      const DeepCollectionEquality().hash(few),
-      const DeepCollectionEquality().hash(many));
+  int get hashCode => Object.hash(runtimeType, id, one, few, many);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MeasureUnitJsonCopyWith<_$_MeasureUnitJson> get copyWith =>
       __$$_MeasureUnitJsonCopyWithImpl<_$_MeasureUnitJson>(this, _$identity);
 

@@ -35,43 +35,47 @@ mixin _$RecipeJson {
 abstract class $RecipeJsonCopyWith<$Res> {
   factory $RecipeJsonCopyWith(
           RecipeJson value, $Res Function(RecipeJson) then) =
-      _$RecipeJsonCopyWithImpl<$Res>;
+      _$RecipeJsonCopyWithImpl<$Res, RecipeJson>;
+  @useResult
   $Res call({int id, String? name, int? duration, String? photo});
 }
 
 /// @nodoc
-class _$RecipeJsonCopyWithImpl<$Res> implements $RecipeJsonCopyWith<$Res> {
+class _$RecipeJsonCopyWithImpl<$Res, $Val extends RecipeJson>
+    implements $RecipeJsonCopyWith<$Res> {
   _$RecipeJsonCopyWithImpl(this._value, this._then);
 
-  final RecipeJson _value;
   // ignore: unused_field
-  final $Res Function(RecipeJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = freezed,
     Object? duration = freezed,
     Object? photo = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      photo: photo == freezed
+      photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -82,40 +86,40 @@ abstract class _$$_RecipeJsonCopyWith<$Res>
           _$_RecipeJson value, $Res Function(_$_RecipeJson) then) =
       __$$_RecipeJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, String? name, int? duration, String? photo});
 }
 
 /// @nodoc
-class __$$_RecipeJsonCopyWithImpl<$Res> extends _$RecipeJsonCopyWithImpl<$Res>
+class __$$_RecipeJsonCopyWithImpl<$Res>
+    extends _$RecipeJsonCopyWithImpl<$Res, _$_RecipeJson>
     implements _$$_RecipeJsonCopyWith<$Res> {
   __$$_RecipeJsonCopyWithImpl(
       _$_RecipeJson _value, $Res Function(_$_RecipeJson) _then)
-      : super(_value, (v) => _then(v as _$_RecipeJson));
+      : super(_value, _then);
 
-  @override
-  _$_RecipeJson get _value => super._value as _$_RecipeJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = freezed,
     Object? duration = freezed,
     Object? photo = freezed,
   }) {
     return _then(_$_RecipeJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      duration: duration == freezed
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as int?,
-      photo: photo == freezed
+      photo: freezed == photo
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -154,23 +158,20 @@ class _$_RecipeJson implements _RecipeJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecipeJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.duration, duration) &&
-            const DeepCollectionEquality().equals(other.photo, photo));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.duration, duration) ||
+                other.duration == duration) &&
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(duration),
-      const DeepCollectionEquality().hash(photo));
+  int get hashCode => Object.hash(runtimeType, id, name, duration, photo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeJsonCopyWith<_$_RecipeJson> get copyWith =>
       __$$_RecipeJsonCopyWithImpl<_$_RecipeJson>(this, _$identity);
 

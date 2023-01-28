@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/core/di.dart';
-import 'package:food_otus/pages/main/nav_bloc.dart';
+import 'package:food_otus/presentation/main/nav_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class MainPage extends StatefulWidget {

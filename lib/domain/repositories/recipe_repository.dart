@@ -102,7 +102,8 @@ class RecipeRepository {
     return Recipe.fromDB(recipesDB!);
   }
 
-  Future<void> savePhoto(int recipe, String path, List<DetectorData> data) async {
+  Future<void> savePhoto(
+      int recipe, String path, List<DetectorData> data) async {
     var recipeDB = localSource.getRecipe(recipe)!;
     List<DetectorDB> detectors = [];
     for (var item in data) {
@@ -117,5 +118,11 @@ class RecipeRepository {
   List<DetectorData> getDetectors(String path) {
     var detectors = localSource.getDetectors(path);
     return detectors.map((e) => DetectorData.fromDB(e)).toList();
+  }
+
+  double getCaloriesOfRecipe(int recipe) {
+    var ingredients = localSource.getIngredients(recipe);
+    var calories = ingredients.map((e) => e.caloriesForUnit * e.count).sum;
+    return calories;
   }
 }

@@ -8,11 +8,11 @@ import 'package:food_otus/data/data_sources/user_local_source.dart';
 import 'package:food_otus/data/data_sources/user_remote_source.dart';
 import 'package:food_otus/domain/repositories/recipe_repository.dart';
 import 'package:food_otus/domain/repositories/user_repository.dart';
-import 'package:food_otus/pages/favorite/bloc/favorite_bloc.dart';
-import 'package:food_otus/pages/login/bloc/login_bloc.dart';
-import 'package:food_otus/pages/main/nav_bloc.dart';
-import 'package:food_otus/pages/profile/bloc/profile_bloc.dart';
-import 'package:food_otus/pages/recipes/bloc/recipe_bloc.dart';
+import 'package:food_otus/presentation/favorite/bloc/favorite_bloc.dart';
+import 'package:food_otus/presentation/login/bloc/login_bloc.dart';
+import 'package:food_otus/presentation/main/nav_bloc.dart';
+import 'package:food_otus/presentation/profile/bloc/profile_bloc.dart';
+import 'package:food_otus/presentation/recipes/bloc/recipe_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final appIns = GetIt.instance;

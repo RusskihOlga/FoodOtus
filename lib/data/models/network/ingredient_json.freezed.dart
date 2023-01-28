@@ -35,7 +35,8 @@ mixin _$IngredientJson {
 abstract class $IngredientJsonCopyWith<$Res> {
   factory $IngredientJsonCopyWith(
           IngredientJson value, $Res Function(IngredientJson) then) =
-      _$IngredientJsonCopyWithImpl<$Res>;
+      _$IngredientJsonCopyWithImpl<$Res, IngredientJson>;
+  @useResult
   $Res call(
       {int id,
       String? name,
@@ -46,49 +47,52 @@ abstract class $IngredientJsonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$IngredientJsonCopyWithImpl<$Res>
+class _$IngredientJsonCopyWithImpl<$Res, $Val extends IngredientJson>
     implements $IngredientJsonCopyWith<$Res> {
   _$IngredientJsonCopyWithImpl(this._value, this._then);
 
-  final IngredientJson _value;
   // ignore: unused_field
-  final $Res Function(IngredientJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = freezed,
     Object? caloriesForUnit = freezed,
     Object? measureUnit = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      caloriesForUnit: caloriesForUnit == freezed
+      caloriesForUnit: freezed == caloriesForUnit
           ? _value.caloriesForUnit
           : caloriesForUnit // ignore: cast_nullable_to_non_nullable
               as double?,
-      measureUnit: measureUnit == freezed
+      measureUnit: freezed == measureUnit
           ? _value.measureUnit
           : measureUnit // ignore: cast_nullable_to_non_nullable
               as MeasureUnitJson?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $MeasureUnitJsonCopyWith<$Res>? get measureUnit {
     if (_value.measureUnit == null) {
       return null;
     }
 
     return $MeasureUnitJsonCopyWith<$Res>(_value.measureUnit!, (value) {
-      return _then(_value.copyWith(measureUnit: value));
+      return _then(_value.copyWith(measureUnit: value) as $Val);
     });
   }
 }
@@ -100,6 +104,7 @@ abstract class _$$_IngredientJsonCopyWith<$Res>
           _$_IngredientJson value, $Res Function(_$_IngredientJson) then) =
       __$$_IngredientJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id,
       String? name,
@@ -112,36 +117,34 @@ abstract class _$$_IngredientJsonCopyWith<$Res>
 
 /// @nodoc
 class __$$_IngredientJsonCopyWithImpl<$Res>
-    extends _$IngredientJsonCopyWithImpl<$Res>
+    extends _$IngredientJsonCopyWithImpl<$Res, _$_IngredientJson>
     implements _$$_IngredientJsonCopyWith<$Res> {
   __$$_IngredientJsonCopyWithImpl(
       _$_IngredientJson _value, $Res Function(_$_IngredientJson) _then)
-      : super(_value, (v) => _then(v as _$_IngredientJson));
+      : super(_value, _then);
 
-  @override
-  _$_IngredientJson get _value => super._value as _$_IngredientJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = freezed,
     Object? caloriesForUnit = freezed,
     Object? measureUnit = freezed,
   }) {
     return _then(_$_IngredientJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      caloriesForUnit: caloriesForUnit == freezed
+      caloriesForUnit: freezed == caloriesForUnit
           ? _value.caloriesForUnit
           : caloriesForUnit // ignore: cast_nullable_to_non_nullable
               as double?,
-      measureUnit: measureUnit == freezed
+      measureUnit: freezed == measureUnit
           ? _value.measureUnit
           : measureUnit // ignore: cast_nullable_to_non_nullable
               as MeasureUnitJson?,
@@ -180,25 +183,22 @@ class _$_IngredientJson implements _IngredientJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IngredientJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.caloriesForUnit, caloriesForUnit) &&
-            const DeepCollectionEquality()
-                .equals(other.measureUnit, measureUnit));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.caloriesForUnit, caloriesForUnit) ||
+                other.caloriesForUnit == caloriesForUnit) &&
+            (identical(other.measureUnit, measureUnit) ||
+                other.measureUnit == measureUnit));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(caloriesForUnit),
-      const DeepCollectionEquality().hash(measureUnit));
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, caloriesForUnit, measureUnit);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_IngredientJsonCopyWith<_$_IngredientJson> get copyWith =>
       __$$_IngredientJsonCopyWithImpl<_$_IngredientJson>(this, _$identity);
 

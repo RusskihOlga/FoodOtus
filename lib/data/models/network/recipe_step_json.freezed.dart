@@ -35,7 +35,8 @@ mixin _$RecipeStepJson {
 abstract class $RecipeStepJsonCopyWith<$Res> {
   factory $RecipeStepJsonCopyWith(
           RecipeStepJson value, $Res Function(RecipeStepJson) then) =
-      _$RecipeStepJsonCopyWithImpl<$Res>;
+      _$RecipeStepJsonCopyWithImpl<$Res, RecipeStepJson>;
+  @useResult
   $Res call({int id, int number, RecipeJson recipe, StepJson step});
 
   $RecipeJsonCopyWith<$Res> get recipe;
@@ -43,52 +44,56 @@ abstract class $RecipeStepJsonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeStepJsonCopyWithImpl<$Res>
+class _$RecipeStepJsonCopyWithImpl<$Res, $Val extends RecipeStepJson>
     implements $RecipeStepJsonCopyWith<$Res> {
   _$RecipeStepJsonCopyWithImpl(this._value, this._then);
 
-  final RecipeStepJson _value;
   // ignore: unused_field
-  final $Res Function(RecipeStepJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? number = freezed,
-    Object? recipe = freezed,
-    Object? step = freezed,
+    Object? id = null,
+    Object? number = null,
+    Object? recipe = null,
+    Object? step = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      number: number == freezed
+      number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
-      step: step == freezed
+      step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
               as StepJson,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RecipeJsonCopyWith<$Res> get recipe {
     return $RecipeJsonCopyWith<$Res>(_value.recipe, (value) {
-      return _then(_value.copyWith(recipe: value));
+      return _then(_value.copyWith(recipe: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $StepJsonCopyWith<$Res> get step {
     return $StepJsonCopyWith<$Res>(_value.step, (value) {
-      return _then(_value.copyWith(step: value));
+      return _then(_value.copyWith(step: value) as $Val);
     });
   }
 }
@@ -100,6 +105,7 @@ abstract class _$$_RecipeStepJsonCopyWith<$Res>
           _$_RecipeStepJson value, $Res Function(_$_RecipeStepJson) then) =
       __$$_RecipeStepJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, int number, RecipeJson recipe, StepJson step});
 
   @override
@@ -110,36 +116,34 @@ abstract class _$$_RecipeStepJsonCopyWith<$Res>
 
 /// @nodoc
 class __$$_RecipeStepJsonCopyWithImpl<$Res>
-    extends _$RecipeStepJsonCopyWithImpl<$Res>
+    extends _$RecipeStepJsonCopyWithImpl<$Res, _$_RecipeStepJson>
     implements _$$_RecipeStepJsonCopyWith<$Res> {
   __$$_RecipeStepJsonCopyWithImpl(
       _$_RecipeStepJson _value, $Res Function(_$_RecipeStepJson) _then)
-      : super(_value, (v) => _then(v as _$_RecipeStepJson));
+      : super(_value, _then);
 
-  @override
-  _$_RecipeStepJson get _value => super._value as _$_RecipeStepJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? number = freezed,
-    Object? recipe = freezed,
-    Object? step = freezed,
+    Object? id = null,
+    Object? number = null,
+    Object? recipe = null,
+    Object? step = null,
   }) {
     return _then(_$_RecipeStepJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      number: number == freezed
+      number: null == number
           ? _value.number
           : number // ignore: cast_nullable_to_non_nullable
               as int,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
-      step: step == freezed
+      step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
               as StepJson,
@@ -178,23 +182,19 @@ class _$_RecipeStepJson implements _RecipeStepJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecipeStepJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.number, number) &&
-            const DeepCollectionEquality().equals(other.recipe, recipe) &&
-            const DeepCollectionEquality().equals(other.step, step));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.recipe, recipe) || other.recipe == recipe) &&
+            (identical(other.step, step) || other.step == step));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(number),
-      const DeepCollectionEquality().hash(recipe),
-      const DeepCollectionEquality().hash(step));
+  int get hashCode => Object.hash(runtimeType, id, number, recipe, step);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeStepJsonCopyWith<_$_RecipeStepJson> get copyWith =>
       __$$_RecipeStepJsonCopyWithImpl<_$_RecipeStepJson>(this, _$identity);
 

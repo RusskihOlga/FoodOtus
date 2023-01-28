@@ -35,7 +35,8 @@ mixin _$RecipeIngredientJson {
 abstract class $RecipeIngredientJsonCopyWith<$Res> {
   factory $RecipeIngredientJsonCopyWith(RecipeIngredientJson value,
           $Res Function(RecipeIngredientJson) then) =
-      _$RecipeIngredientJsonCopyWithImpl<$Res>;
+      _$RecipeIngredientJsonCopyWithImpl<$Res, RecipeIngredientJson>;
+  @useResult
   $Res call({int id, int count, IngredientJson ingredient, RecipeJson recipe});
 
   $IngredientJsonCopyWith<$Res> get ingredient;
@@ -43,52 +44,57 @@ abstract class $RecipeIngredientJsonCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$RecipeIngredientJsonCopyWithImpl<$Res>
+class _$RecipeIngredientJsonCopyWithImpl<$Res,
+        $Val extends RecipeIngredientJson>
     implements $RecipeIngredientJsonCopyWith<$Res> {
   _$RecipeIngredientJsonCopyWithImpl(this._value, this._then);
 
-  final RecipeIngredientJson _value;
   // ignore: unused_field
-  final $Res Function(RecipeIngredientJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? count = freezed,
-    Object? ingredient = freezed,
-    Object? recipe = freezed,
+    Object? id = null,
+    Object? count = null,
+    Object? ingredient = null,
+    Object? recipe = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      count: count == freezed
+      count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      ingredient: ingredient == freezed
+      ingredient: null == ingredient
           ? _value.ingredient
           : ingredient // ignore: cast_nullable_to_non_nullable
               as IngredientJson,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $IngredientJsonCopyWith<$Res> get ingredient {
     return $IngredientJsonCopyWith<$Res>(_value.ingredient, (value) {
-      return _then(_value.copyWith(ingredient: value));
+      return _then(_value.copyWith(ingredient: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RecipeJsonCopyWith<$Res> get recipe {
     return $RecipeJsonCopyWith<$Res>(_value.recipe, (value) {
-      return _then(_value.copyWith(recipe: value));
+      return _then(_value.copyWith(recipe: value) as $Val);
     });
   }
 }
@@ -100,6 +106,7 @@ abstract class _$$_RecipeIngredientJsonCopyWith<$Res>
           $Res Function(_$_RecipeIngredientJson) then) =
       __$$_RecipeIngredientJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id, int count, IngredientJson ingredient, RecipeJson recipe});
 
   @override
@@ -110,36 +117,34 @@ abstract class _$$_RecipeIngredientJsonCopyWith<$Res>
 
 /// @nodoc
 class __$$_RecipeIngredientJsonCopyWithImpl<$Res>
-    extends _$RecipeIngredientJsonCopyWithImpl<$Res>
+    extends _$RecipeIngredientJsonCopyWithImpl<$Res, _$_RecipeIngredientJson>
     implements _$$_RecipeIngredientJsonCopyWith<$Res> {
   __$$_RecipeIngredientJsonCopyWithImpl(_$_RecipeIngredientJson _value,
       $Res Function(_$_RecipeIngredientJson) _then)
-      : super(_value, (v) => _then(v as _$_RecipeIngredientJson));
+      : super(_value, _then);
 
-  @override
-  _$_RecipeIngredientJson get _value => super._value as _$_RecipeIngredientJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? count = freezed,
-    Object? ingredient = freezed,
-    Object? recipe = freezed,
+    Object? id = null,
+    Object? count = null,
+    Object? ingredient = null,
+    Object? recipe = null,
   }) {
     return _then(_$_RecipeIngredientJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      count: count == freezed
+      count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      ingredient: ingredient == freezed
+      ingredient: null == ingredient
           ? _value.ingredient
           : ingredient // ignore: cast_nullable_to_non_nullable
               as IngredientJson,
-      recipe: recipe == freezed
+      recipe: null == recipe
           ? _value.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as RecipeJson,
@@ -178,24 +183,20 @@ class _$_RecipeIngredientJson implements _RecipeIngredientJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RecipeIngredientJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.count, count) &&
-            const DeepCollectionEquality()
-                .equals(other.ingredient, ingredient) &&
-            const DeepCollectionEquality().equals(other.recipe, recipe));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.ingredient, ingredient) ||
+                other.ingredient == ingredient) &&
+            (identical(other.recipe, recipe) || other.recipe == recipe));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(count),
-      const DeepCollectionEquality().hash(ingredient),
-      const DeepCollectionEquality().hash(recipe));
+  int get hashCode => Object.hash(runtimeType, id, count, ingredient, recipe);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_RecipeIngredientJsonCopyWith<_$_RecipeIngredientJson> get copyWith =>
       __$$_RecipeIngredientJsonCopyWithImpl<_$_RecipeIngredientJson>(
           this, _$identity);

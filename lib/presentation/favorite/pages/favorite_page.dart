@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_otus/core/di.dart';
-import 'package:food_otus/pages/favorite/bloc/favorite_bloc.dart';
-import 'package:food_otus/pages/recipes/widgets/list_recipe.dart';
+import 'package:food_otus/presentation/favorite/bloc/favorite_bloc.dart';
+import 'package:food_otus/presentation/recipes/widgets/list_recipe.dart';
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({Key? key}) : super(key: key);

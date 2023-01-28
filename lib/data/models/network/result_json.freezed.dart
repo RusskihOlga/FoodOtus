@@ -34,18 +34,22 @@ mixin _$ResultJson {
 abstract class $ResultJsonCopyWith<$Res> {
   factory $ResultJsonCopyWith(
           ResultJson value, $Res Function(ResultJson) then) =
-      _$ResultJsonCopyWithImpl<$Res>;
+      _$ResultJsonCopyWithImpl<$Res, ResultJson>;
+  @useResult
   $Res call({String? token, String? status, String? error});
 }
 
 /// @nodoc
-class _$ResultJsonCopyWithImpl<$Res> implements $ResultJsonCopyWith<$Res> {
+class _$ResultJsonCopyWithImpl<$Res, $Val extends ResultJson>
+    implements $ResultJsonCopyWith<$Res> {
   _$ResultJsonCopyWithImpl(this._value, this._then);
 
-  final ResultJson _value;
   // ignore: unused_field
-  final $Res Function(ResultJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
@@ -53,19 +57,19 @@ class _$ResultJsonCopyWithImpl<$Res> implements $ResultJsonCopyWith<$Res> {
     Object? error = freezed,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,19 +80,19 @@ abstract class _$$_ResultJsonCopyWith<$Res>
           _$_ResultJson value, $Res Function(_$_ResultJson) then) =
       __$$_ResultJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? token, String? status, String? error});
 }
 
 /// @nodoc
-class __$$_ResultJsonCopyWithImpl<$Res> extends _$ResultJsonCopyWithImpl<$Res>
+class __$$_ResultJsonCopyWithImpl<$Res>
+    extends _$ResultJsonCopyWithImpl<$Res, _$_ResultJson>
     implements _$$_ResultJsonCopyWith<$Res> {
   __$$_ResultJsonCopyWithImpl(
       _$_ResultJson _value, $Res Function(_$_ResultJson) _then)
-      : super(_value, (v) => _then(v as _$_ResultJson));
+      : super(_value, _then);
 
-  @override
-  _$_ResultJson get _value => super._value as _$_ResultJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? token = freezed,
@@ -96,15 +100,15 @@ class __$$_ResultJsonCopyWithImpl<$Res> extends _$ResultJsonCopyWithImpl<$Res>
     Object? error = freezed,
   }) {
     return _then(_$_ResultJson(
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      error: error == freezed
+      error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -138,21 +142,18 @@ class _$_ResultJson implements _ResultJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ResultJson &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, token, status, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ResultJsonCopyWith<_$_ResultJson> get copyWith =>
       __$$_ResultJsonCopyWithImpl<_$_ResultJson>(this, _$identity);
 

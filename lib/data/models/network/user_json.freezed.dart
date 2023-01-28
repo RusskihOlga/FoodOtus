@@ -35,49 +35,53 @@ mixin _$UserJson {
 /// @nodoc
 abstract class $UserJsonCopyWith<$Res> {
   factory $UserJsonCopyWith(UserJson value, $Res Function(UserJson) then) =
-      _$UserJsonCopyWithImpl<$Res>;
+      _$UserJsonCopyWithImpl<$Res, UserJson>;
+  @useResult
   $Res call(
       {int id, String? login, String? password, String? token, String? avatar});
 }
 
 /// @nodoc
-class _$UserJsonCopyWithImpl<$Res> implements $UserJsonCopyWith<$Res> {
+class _$UserJsonCopyWithImpl<$Res, $Val extends UserJson>
+    implements $UserJsonCopyWith<$Res> {
   _$UserJsonCopyWithImpl(this._value, this._then);
 
-  final UserJson _value;
   // ignore: unused_field
-  final $Res Function(UserJson) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? login = freezed,
     Object? password = freezed,
     Object? token = freezed,
     Object? avatar = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      login: login == freezed
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: password == freezed
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -87,46 +91,46 @@ abstract class _$$_UserJsonCopyWith<$Res> implements $UserJsonCopyWith<$Res> {
           _$_UserJson value, $Res Function(_$_UserJson) then) =
       __$$_UserJsonCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int id, String? login, String? password, String? token, String? avatar});
 }
 
 /// @nodoc
-class __$$_UserJsonCopyWithImpl<$Res> extends _$UserJsonCopyWithImpl<$Res>
+class __$$_UserJsonCopyWithImpl<$Res>
+    extends _$UserJsonCopyWithImpl<$Res, _$_UserJson>
     implements _$$_UserJsonCopyWith<$Res> {
   __$$_UserJsonCopyWithImpl(
       _$_UserJson _value, $Res Function(_$_UserJson) _then)
-      : super(_value, (v) => _then(v as _$_UserJson));
+      : super(_value, _then);
 
-  @override
-  _$_UserJson get _value => super._value as _$_UserJson;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? login = freezed,
     Object? password = freezed,
     Object? token = freezed,
     Object? avatar = freezed,
   }) {
     return _then(_$_UserJson(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      login: login == freezed
+      login: freezed == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: password == freezed
+      password: freezed == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      avatar: avatar == freezed
+      avatar: freezed == avatar
           ? _value.avatar
           : avatar // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -168,25 +172,22 @@ class _$_UserJson implements _UserJson {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserJson &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.login, login) &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.avatar, avatar));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(login),
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(avatar));
+  int get hashCode =>
+      Object.hash(runtimeType, id, login, password, token, avatar);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserJsonCopyWith<_$_UserJson> get copyWith =>
       __$$_UserJsonCopyWithImpl<_$_UserJson>(this, _$identity);
 
